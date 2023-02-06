@@ -9,6 +9,16 @@ class DB {
             'SELECT * FROM department'
         )
     }
+    viewAllRoles(){
+        return this.connection.query(
+            'SELECT * FROM role'
+            )
+    }
+    viewAllEmployees(){
+        return this.connection.query(
+            'SELECT * FROM employee'
+            )
+    }
 }
 
 module.exports = new DB(connection)
