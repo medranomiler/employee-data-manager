@@ -1,6 +1,9 @@
 const {prompt} = require("inquirer")
-// const table = require("console.table")
+require('console.table')
 const db = require('./db')
+const mysql = require('mysql2')
+const { start } = require("repl");
+
 
 function init(){
     questions()
@@ -40,25 +43,26 @@ const {choice} = await prompt([
             return viewDepartments();
         case 'VIEW_ROLES':
             return viewRoles();
-        }
+        case 'VIEW_EMPLOYEES':
+            return viewEmployees();          
+}
 }
 
 async function viewDepartments(){
     const departments = await db.viewAllDepartments();
-    console.table(departments)
-    questions()
+    console.table(departments);
+    questions();
 }
 
-async function viewDepartments(){
-    const departments = await db.viewAllDepartments();
-    console.table(departments)
-    questions()
+async function viewRoles(){
+    const roles = await db.viewAllRoles();
+    console.table(roles);
+    questions();
+}
+async function viewEmployees(){
+    const employees = await db.viewAllEmployees();
+    console.table(employees);
+    questions();
 }
 
-async function viewDepartments(){
-    const departments = await db.viewAllDepartments();
-    console.table(departments)
-    questions()
-}
-
-init()
+init();

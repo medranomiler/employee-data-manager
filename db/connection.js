@@ -1,16 +1,21 @@
 const mysql = require('mysql2');
-const PORT = process.env.PORT || 3001;
+const util = require('util');
 
-const db = mysql.createConnection(
+// const PORT = process.env.PORT || 3001;
+
+const connection = mysql.createConnection(
     {
       host: 'localhost',
       // MySQL username,
       user: 'root',
       // MySQL password
-      password: 'MYSQL-PASSWORD',
+      password: '',
       database: 'employees_db'
     },
     console.log(`Connected to the classlist_db database.`)
   );
+  
+  connection.connect();
+  connection.query = util.promisify(connection.query);
 
-  module.exports = db
+  module.exports = connection;
