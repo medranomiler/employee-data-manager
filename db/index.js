@@ -1,5 +1,6 @@
 const connection = require('./connection')
 
+// this is my function to handle queries to the db
 class db {
     constructor(connection){
         this.connection = connection;
