@@ -5,15 +5,16 @@ class db {
         this.connection = connection;
     }
     viewAllDepartments = () => {
-
         return this.connection.query('SELECT * FROM department');
-
     }
     viewAllRoles(){
         return this.connection.query('SELECT * FROM role');
     }
     viewAllEmployees(){
         return this.connection.query('SELECT * FROM employee');
+    }
+    addNewDepartment(){
+        return this.connection.query('INSER INTO');
     }
 }
 
