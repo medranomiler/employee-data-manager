@@ -4,7 +4,7 @@ const db = require('./db')
 const mysql = require('mysql2')
 
 
-
+// function that runs on start up of server. Calls the questions function which is the Data Manager main menu
 function init(){
 {
     console.log("//////////////////////////")
@@ -17,7 +17,8 @@ function init(){
     }
     questions()
 }
-
+// ------------------------------------------------------------------------------------------------------------------------------------------------------
+// This is the main menu prompt. When an option is chosen, a function is called.
 async function questions() {
 const {choice} = await prompt([
     {
@@ -79,25 +80,31 @@ const {choice} = await prompt([
             return quit(); 
 }
 }
+// ------------------------------------------------------------------------------------------------------------------------------------------------------
+// these are the functions that are called from a chosen option from the main menu. They use queries defined in the index.js file within the db folder.
 
+// View Departments
 async function viewDepartments(){
     const departments = await db.viewAllDepartments();
     console.table(departments);
     questions();
 }
 
+// View Roles
 async function viewRoles(){
     const roles = await db.viewAllRoles();
     console.table(roles);
     questions();
 }
 
+// View Employees
 async function viewEmployees(){
     const employees = await db.viewAllEmployees();
     console.table(employees);
     questions();
 }
 
+// Add Deparment
 async function addDepartment(){
     const department = await prompt([
         {
@@ -111,6 +118,7 @@ async function addDepartment(){
     questions()
 }
 
+// Add Role
 async function addRole(){
     const departments = await db.viewAllDepartments();
     console.log(departments)
@@ -142,6 +150,7 @@ async function addRole(){
     questions()
 }
 
+// Add Employee
 async function addEmployee(){
     const roles = await db.viewAllRoles();
     const employees = await db.viewAllEmployees();
@@ -190,7 +199,8 @@ async function addEmployee(){
 
     questions();
 }
-
+// ------------------------------------------------------------------------------------------------------------------------------------------------------
+// this is the quit function that closes node.
 function quit(){
     console.log("//////////////////////////")
     console.log("//                      //")
@@ -199,6 +209,8 @@ function quit(){
     console.log("//                      //")
     console.log("//                      //")
     console.log("//////////////////////////")
+
+    process.exit(0)
 }
 
 init();
