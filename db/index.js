@@ -13,8 +13,14 @@ class db {
     viewAllEmployees(){
         return this.connection.query('SELECT * FROM employee');
     }
-    addNewDepartment(){
-        return this.connection.query('INSER INTO');
+    addNewDepartment(department) {
+        return this.connection.query("INSERT INTO department SET ?", department);
+    }
+    addNewRole(role) {
+        return this.connection.query("INSERT INTO role SET ?", role);
+    }
+    addNewEmployee(employee) {
+        return this.connection.query("INSERT INTO employee SET ?", employee);
     }
 }
 

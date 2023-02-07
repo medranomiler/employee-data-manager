@@ -28,5 +28,12 @@ INSERT INTO role
 INSERT INTO employee
     (first_name, last_name, role_id, manager_id)
     VALUES
-    ("Darren", "Medrano", 1, 1);
+    ("Bart", "Simpson", 1, 1),
+    ("Lisa", "Simpson", 2, null),
+    ("Homer", "Simpson", 3, null),
+    ("Marge", "Simpson", 4, null),
+    ("Maggie", "Simpson", 5, null),
+    ("Ned", "Flanders", 6, null),
+    ("Chief", "Wiggum", 7, null),
+    ("Ralph", "Wiggum", 8, null);
     
